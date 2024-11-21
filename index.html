@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style2.css" /> -->
+    <link rel="stylesheet" href="utility.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+        <div class="header layout red-border background-grey">
+          <img id="cross" class="pointer" src="Resources/close.svg" alt="cross" />
+          <div><img class="logo" src="./Resources/logo.svg" alt="logo" /></div>
+          <ul>
+            <li>
+              <img
+                class="homeNsearch"
+                src="./Resources/home.svg"
+                alt="home"
+              />Home
+            </li>
+            <li>
+              <img
+                class="homeNsearch"
+                src="./Resources/search.svg"
+                alt=""
+              />Search
+            </li>
+          </ul>
+        </div>
+        <div class="library layout background-grey">
+          <div class="library-heading">
+            <img
+              class="playlist"
+              src="./Resources/playlist.svg"
+              alt="playlist"
+            />
+            <p>Your Library</p>
+          </div>
+          <div class="create-playlist">
+            <p>Create your first playlist</p>
+            <p>it's easy, we'll help you</p>
+            <button>Create playlisy</button>
+          </div>
+          <div class="music-list">
+            <!-- <div class="music">
+              <img src="Resources/musical-notes.svg" alt="" />
+              <div class="song-details">
+                <p class="song-name">My song</p>
+                <p class="artist-name">Abhi</p>
+              </div>
+              <div class="music-list-button">
+                <img src="Resources/play-sharp.svg" alt="" />
+              </div>
+            </div> -->
+          </div>
+          <div class="left-footer">
+            <div class="anchor-tags">
+              <a href="#">Legal</a>
+              <a href="#">Privacy Center</a>
+              <a href="#">Cookies</a>
+              <a href="#">About ads</a>
+              <a href="#">Accessibility</a>
+            </div>
+            <div class="lang-button">
+              <button>By Abhi!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right red-border background-grey">
+        <div class="right-header">
+          <div  class="right-header-buttons">
+            <svg style="filter: invert(.5);"
+              id="hamburger"
+              class="pointer"
+              height="40"
+              xmlns="http://www.w3.org/2000/svg"
+              class="ionicon"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                stroke-width="48"
+                d="M88 152h336M88 256h336M88 360h336"
+              />
+            </svg>
+            <!-- <img class="pointer" width="30" src="./Resources/menu.svg" alt="Menu"> -->
+            <!-- <img
+              class="pointer"
+              src="./Resources/backward.svg"
+              alt="backward"
+            />
+            <img class="pointer" src="./Resources/foreward.svg" alt="forward" /> -->
+           <p > Playlists</p>
+          </div>
+          <div>
+            <button class="signUp pointer">Sign up</button
+            ><button class="logIn pointer">Log in</button>
+          </div>
+        </div>
+        <div class="content-area">
+          <!-- <div class="card pointer">
+            <img src="Resources/card-1-img.jpeg" alt="image" />
+            <div class="card-button">
+              <img src="Resources/play-sharp.svg" alt="" />
+            </div>
+            <h2 class="card-heading">Happy Hits!</h2>
+            <p class="card-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+
+          <div class="card pointer">
+            <img src="Resources/card-1-img.jpeg" alt="image" />
+            <div class="card-button">
+              <img src="Resources/play-sharp.svg" alt="" />
+            </div>
+            <h2 class="card-heading">Happy Hits!</h2>
+            <p class="card-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div> -->
+
+         
+        </div>
+        <div class="music-player">
+          <div class="upper-music-area">
+            <div class="song-description"></div>
+            <div class="control-buttons">
+              <button id="previous"
+                class="previous-button track-change-buttons music-player-buttons"
+              >
+                <img src="Resources/play-skip-back.svg" alt="" />
+              </button>
+              <button class="play-button music-player-buttons">
+                <img src="Resources/play.svg" alt="" />
+              </button>
+
+              <button id="next"
+                class="next-button track-change-buttons music-player-buttons"
+              >
+                <img src="Resources/play-skip-forward.svg" alt="" />
+              </button>
+            </div>
+
+            <div class="duration">
+              <div class="sub-duration">
+                <p class="current-time">0:00 &nbsp;/</p>
+                <p class="song-duration">&nbsp; 0:00</p>
+              </div>
+              <div class="volume-box">
+                <img
+                  class="volume-button"
+                  src="Resources/volume-low.svg"
+                  alt=""
+                />
+                <input class="volume-bar" type="range">
+              </div>
+            </div>
+          </div>
+          <div class="playbar">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+.background-grey {
+  background-color: #111111;
+}
+
+.layout {
+  margin: 11px;
+  border-radius: 9px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+/* cusotom scroll bar */
+body::-webkit-scrollbar, .right::-webkit-scrollbar {
+  width: 20px;                             /* Narrow scrollbar */
+}
+
+body::-webkit-scrollbar-track, .music-list::-webkit-scrollbar-track, .right::-webkit-scrollbar-track {
+  background: #1a1a1a;                     /* Very dark track */
+  /* border-radius: 0px;                     Rounded track edges */
+  box-shadow: inset 0 0 10px #000;          /* Subtle shadow for depth */
+}
+
+body::-webkit-scrollbar-thumb, .music-list::-webkit-scrollbar-thumb, .right::-webkit-scrollbar-thumb {
+  background: rgb(32, 32, 32); 
+  border-radius: 20px;           
+  border: 2px solid #1a1a1a;               /* Matches track, creating "floating" effect */
+}
+
+/* ---------------------------------------- */
+
+
+
+
+
+
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #282828; /* Dark background matching Spotify theme */
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #1DB954;
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.5);
+}
+
+/* Track styling for WebKit browsers */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: #282828;
+  border-radius: 5px;
+}
+
+/* Track styling for Firefox */
+input[type="range"]::-moz-range-track {
+  height: 8px;
+  background: #282828;
+  border-radius: 5px;
+}
+
+/* Thumb styling for WebKit browsers */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -6px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #1DB954; /* Spotify green */
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #1DB954;
+  box-shadow: 0 0 10px #1DB954, 0 0 20px rgba(29, 185, 84, 0.7), 0 0 30px rgba(29, 185, 84, 0.5);
+  transition: transform 0.2s ease;
+}
+
+/* Thumb styling for Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #1DB954;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #1DB954;
+  box-shadow: 0 0 10px #1DB954, 0 0 20px rgba(29, 185, 84, 0.7), 0 0 30px rgba(29, 185, 84, 0.5);
+  transition: transform 0.2s ease;
+}
+
+/* Thumb hover effect */
+input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2); /* Enlarge thumb on hover */
+}
+
+/* Custom label for the futuristic look */
+.slider-label {
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+  color: #1DB954;
+  margin-right: 20px;
+  text-shadow: 0 0 10px rgba(29, 185, 84, 0.7);
+}
