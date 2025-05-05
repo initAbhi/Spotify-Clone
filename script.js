@@ -1,6 +1,6 @@
 //Utilities --------------------------------------------->
 let currentFolder = "Ruok playlist";
-let currentSong = new Audio(`Songs/${currentFolder}/Problems .mp3`);
+let currentSong = new Audio(`public/Songs/${currentFolder}/Problems .mp3`);
 document.addEventListener("click", () => {
   // currentSong.play();
 });
@@ -14,7 +14,7 @@ function formatTime(seconds) {
 
 //function to get songs from the folder
 let getSongs = async () => {
-  let a = await fetch(`/Songs/${currentFolder}`);
+  let a = await fetch(`/public/Songs/${currentFolder}`);
   // let a = await fetch(`http://127.0.0.1:5500/Songs/${currentFolder}`);
   let response = await a.text();
   let div = document.createElement("div");
@@ -34,8 +34,6 @@ async function updateSongsInLibrary() {
   let songs = await getSongs();
 
   for (const song of songs) {
-   
-
     songlist.innerHTML =
       songlist.innerHTML +
       `<div class="music">
@@ -62,7 +60,7 @@ function playSongFromLibrary() {
     button.addEventListener("click", () => {
       const songName = e.querySelector(".song-name").innerHTML;
 
-      currentSong.src = `/Songs/${currentFolder}/` + songName + `.mp3`;
+      currentSong.src = `/public/Songs/${currentFolder}/` + songName + `.mp3`;
       currentSong.play();
       document.querySelector(".song-description").innerHTML = songName;
       document
@@ -167,7 +165,7 @@ let setVolume = () => {
 
 //function to load playlists ------------------------------------------
 let loadPlaylists = async () => {
-  let folders = await fetch("/Songs/");
+  let folders = await fetch("/public/Songs/");
   response = await folders.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -175,7 +173,7 @@ let loadPlaylists = async () => {
   let deisredas = [];
   as.forEach((e) => {
     // console.log(e.href)
-    if (e.href.includes("/Songs/")) deisredas.push(e);
+    if (e.href.includes("/public/Songs/")) deisredas.push(e);
   });
 
   let contentArea = document.querySelector(".content-area");
@@ -183,7 +181,7 @@ let loadPlaylists = async () => {
     contentArea.innerHTML =
       contentArea.innerHTML +
       `<div data-folder=${e.href} class="card pointer">
-        <img  src="Songs/${e.href.split("Songs/")[1]}/cover.jpeg" alt="image" />
+        <img  src="public/Songs/${e.href.split("Songs/")[1]}/cover.jpeg" alt="image" />
         <div class="card-button">
           <img src="Resources/play-sharp.svg" alt="" />
         </div>
@@ -322,35 +320,37 @@ let spacebarToggle = () => {
   });
 };
 
-
 let AutoPlay = async (e) => {
   let songs = await getSongs();
   let newIndex;
   let currentSongIndex = -1;
 
- 
+  currentSong.addEventListener("ended", (e) => {
+    Array.from(songs).forEach((e, index) => {
+      // console.log(e,currentSong.src)
+      if (e.includes(currentSong.src)) {
+        // if (index < songs.length - 1) newIndex = currentSongIndex + 1;
+        // else newIndex = currentSongIndex;
+        // console.log(newIndex);
+      }
+    });
+    currentSongIndex++;
 
-currentSong.addEventListener("ended", (e) => {
-  Array.from(songs).forEach((e, index) => {
-    // console.log(e,currentSong.src)
-    if (e.includes(currentSong.src)) {
-      currentSongIndex = index;
-      // if (index < songs.length - 1) newIndex = currentSongIndex + 1;
-      // else newIndex = currentSongIndex;
-      // console.log(newIndex);
+    if (currentSongIndex >= songs.length) {
+      currentSongIndex = 0; // Loop back to the first song (optional)
     }
-  });
-  currentSongIndex++;
+    console.log(songs[currentSongIndex + 1]);
 
-  if (currentSongIndex >= songs.length) {
-    currentSongIndex = 0; // Loop back to the first song (optional)
-  }
-  console.log(songs[currentSongIndex + 1]);
-  
-  currentSong.src = songs[currentSongIndex]
- currentSong.play()
-});
-}
+    currentSong.src = songs[currentSongIndex];
+    let songName = songs[currentSongIndex]
+      .split("Songs/")[1]
+      .split("/")[1]
+      .replaceAll("%20", " ")
+      .replace(".mp3", "");
+    currentSong.play();
+    document.querySelector(".song-description").innerHTML = songName; // to update song in playbar
+  });
+};
 // Main function to execute all functions --------------------------------------------------------->
 async function main() {
   await updateSongsInLibrary();
@@ -364,7 +364,7 @@ async function main() {
   await loadPlaylistsSongs();
   await setDefaultSong();
   spacebarToggle();
-  AutoPlay()
+  AutoPlay();
   // prevNnxthandler();
 }
 main();
@@ -373,5 +373,3 @@ main();
 document.addEventListener("contextmenu", (event) => {
   event.preventDefault();
 });
-
-
