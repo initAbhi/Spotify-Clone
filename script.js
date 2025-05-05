@@ -161,7 +161,7 @@ let setVolume = () => {
     currentSong.volume = e.target.value / 100;
     // console.log(e.target.value / 100);
   });
-};
+};//
 
 //function to load playlists ------------------------------------------
 let loadPlaylists = async () => {
