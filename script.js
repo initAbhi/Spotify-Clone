@@ -1,6 +1,6 @@
 //Utilities --------------------------------------------->
 let currentFolder = "Ruok playlist";
-let currentSong = new Audio(`public/Songs/${currentFolder}/Problems .mp3`);
+let currentSong = new Audio(`Songs/${currentFolder}/Problems .mp3`);
 document.addEventListener("click", () => {
   // currentSong.play();
 });
@@ -14,7 +14,7 @@ function formatTime(seconds) {
 
 //function to get songs from the folder
 let getSongs = async () => {
-  let a = await fetch(`/public/Songs/${currentFolder}`);
+  let a = await fetch(`/Songs/${currentFolder}`);
   // let a = await fetch(`http://127.0.0.1:5500/Songs/${currentFolder}`);
   let response = await a.text();
   let div = document.createElement("div");
@@ -60,7 +60,7 @@ function playSongFromLibrary() {
     button.addEventListener("click", () => {
       const songName = e.querySelector(".song-name").innerHTML;
 
-      currentSong.src = `/public/Songs/${currentFolder}/` + songName + `.mp3`;
+      currentSong.src = `/Songs/${currentFolder}/` + songName + `.mp3`;
       currentSong.play();
       document.querySelector(".song-description").innerHTML = songName;
       document
@@ -161,11 +161,11 @@ let setVolume = () => {
     currentSong.volume = e.target.value / 100;
     // console.log(e.target.value / 100);
   });
-};//
+}; //
 
 //function to load playlists ------------------------------------------
 let loadPlaylists = async () => {
-  let folders = await fetch("/public/Songs/");
+  let folders = await fetch("/Songs/");
   response = await folders.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -173,7 +173,7 @@ let loadPlaylists = async () => {
   let deisredas = [];
   as.forEach((e) => {
     // console.log(e.href)
-    if (e.href.includes("/public/Songs/")) deisredas.push(e);
+    if (e.href.includes("/Songs/")) deisredas.push(e);
   });
 
   let contentArea = document.querySelector(".content-area");
@@ -181,7 +181,7 @@ let loadPlaylists = async () => {
     contentArea.innerHTML =
       contentArea.innerHTML +
       `<div data-folder=${e.href} class="card pointer">
-        <img  src="public/Songs/${e.href.split("Songs/")[1]}/cover.jpeg" alt="image" />
+        <img  src="Songs/${e.href.split("Songs/")[1]}/cover.jpeg" alt="image" />
         <div class="card-button">
           <img src="Resources/play-sharp.svg" alt="" />
         </div>
